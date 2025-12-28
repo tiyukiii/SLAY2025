@@ -9,8 +9,12 @@ import { DashboardView } from './components/DashboardView';
 import { Header } from './components/Header';
 
 // Инициализация Supabase с твоими данными
-const SUPABASE_URL = 'https://mfdxgqpmpmjyyxnfzrrv.supabase.co'; 
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mZHhncXBtcG1qeXl4bmZ6cnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY5MjM3MzQsImV4cCI6MjA4MjQ5OTczNH0.-MsegYtNTty_sI9NUVW0jy2XKQZq89E9oIBhH9stnqk';
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  throw new Error('Supabase env variables are missing');
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
